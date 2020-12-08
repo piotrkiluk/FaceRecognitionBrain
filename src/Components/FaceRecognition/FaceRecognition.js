@@ -2,9 +2,9 @@ import React from 'react';
 
 const FaceRecognition = () => {
     return (
-        <nav className='flex justify-end'>
-
-        </nav> 
+        <div className='center'>
+            <img src='#' alt='Image_Face_Recognition'/>
+        </div> 
     ); 
 }
 
