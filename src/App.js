@@ -4,10 +4,18 @@ import Navigation from './Components/Navigation/Navigation';
 import Logo from './Components/Logo/Logo';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import Rank from './Components/Rank/Rank';
+import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import './App.css';
 
 const particleOptions = {
   particles: {
+    number: {
+      value: 30,
+      density: {
+        enable: true,
+        value_area: 800
+      }
+    },
     line_linked: {
       shadow: {
         enable: true,
@@ -27,7 +35,7 @@ class App extends Component {
         <Logo />
         <Rank />
         <ImageLinkForm />
-        {/* <FaceRecognition /> */}
+        <FaceRecognition />
       </div>
     )
   }
