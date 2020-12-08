@@ -1,6 +1,6 @@
 {
   "name": "facerecognitionbrain",
-  "homepage": "http://piotrkiluk.github.io/FaceRecognitionName",
+  "homepage": "http://piotrkiluk.github.io/FaceRecognitionBrain",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
