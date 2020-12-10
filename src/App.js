@@ -5,6 +5,8 @@ import Navigation from './Components/Navigation/Navigation';
 import Logo from './Components/Logo/Logo';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import Rank from './Components/Rank/Rank';
+import SignIn from './Components/SignIn/SignIn';
+import Registration from './Components/Registration/Registration';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import './App.css';
 
@@ -18,8 +20,13 @@ class App extends Component {
     this.state = {
       input: '',
       imageUrl: '',
-      box: {}
+      box: {},
+      route: 'signIn'
     }
+  }
+
+  onRouteChange = (route) => {
+    this.setState({route: route});
   }
 
   calculateFaceLocation = (data) => {
@@ -36,7 +43,6 @@ class App extends Component {
   }
 
   displayFaceBox = (box) => { 
-    console.log(box);
     this.setState({box: box});
   }
 
@@ -46,7 +52,6 @@ class App extends Component {
  
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    console.log('click');
     app.models
     .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
     .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
@@ -54,19 +59,27 @@ class App extends Component {
   }
 
   render() {
-    return (
+    return (  
       <div className="App">
         <Particles className='particles' params={particleOptions}/>
-        <Navigation />
-        <Logo />
-        <Rank />
-        <ImageLinkForm 
-          onInputChange={this.onInputChange} 
-          onButtonSubmit={this.onButtonSubmit}/>
-        <FaceRecognition 
-          imageUrl = {this.state.imageUrl}
-          box = {this.state.box}  
-          />
+        <Navigation onRouteChange={this.onRouteChange}/>        
+        { this.state.route === 'home'
+          ? <div>
+              <Logo />
+              <Rank />
+              <ImageLinkForm 
+                onInputChange={this.onInputChange} 
+                onButtonSubmit={this.onButtonSubmit}/>
+              <FaceRecognition 
+                imageUrl = {this.state.imageUrl}
+                box = {this.state.box}/>
+            </div>
+          : (
+            this.state.route === 'signIn'
+            ? <SignIn onRouteChange={this.onRouteChange}/>
+            : <Registration onRouteChange={this.onRouteChange}/>
+            )
+        }
       </div>
     )
   }
@@ -75,17 +88,10 @@ class App extends Component {
 const particleOptions = {
   particles: {
     number: {
-      value: 30,
+      value: 70,
       density: {
         enable: true,
-        value_area: 800
-      }
-    },
-    line_linked: {
-      shadow: {
-        enable: true,
-        color: "#3CA9D1",
-        blur: 5
+        value_area: 700
       }
     }
   }
