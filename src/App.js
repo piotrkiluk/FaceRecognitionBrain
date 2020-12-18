@@ -22,7 +22,14 @@ class App extends Component {
       imageUrl: 'https://i.pinimg.com/originals/f0/a6/4e/f0a64e32194d341befecc80458707565.jpg',
       box: {},
       route: 'signIn',
-      isSignedIn: false
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     }
   }
 
@@ -30,6 +37,16 @@ class App extends Component {
     fetch('http://localhost:3000')
       .then(response => response.json())
       .then(console.log)
+  }
+
+  loadUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined
+    }})
   }
 
   onRouteChange = (route) => {
@@ -93,7 +110,7 @@ class App extends Component {
           : (
               route === 'signIn'
               ? <SignIn onRouteChange={this.onRouteChange}/>
-              : <Registration onRouteChange={this.onRouteChange}/>
+              : <Registration loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
             )
         }
       </div>
