@@ -16,17 +16,18 @@ class Registration extends Component  {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         email: this.state.email,
-        password: this.state.Password,
+        password: this.state.password,
         name: this.state.name
       })
     })
-    .then(response => response.json())
+    .then(response => response.json(response))
     .then(user => {
       if (user) {
         this.props.loadUser(user)
         this.props.onRouteChange('home');
       }
     })
+    .catch(err => {console.log(err)})
   }
 
   onNameChange = (event) => {
