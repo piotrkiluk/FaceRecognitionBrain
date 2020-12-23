@@ -18,3 +18,7 @@
     cursor: pointer;
     z-index: 999;
 }
+
+.bottomMargin {
+    margin-bottom: 100px;
+}

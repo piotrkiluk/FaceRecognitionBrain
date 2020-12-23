@@ -8,11 +8,27 @@ import Rank from './Components/Rank/Rank';
 import SignIn from './Components/SignIn/SignIn';
 import Registration from './Components/Registration/Registration';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
+//import Footer from './Components/Footer/Footer';
 import './App.css';
 
 const app = new Clarifai.App({
   apiKey: 'c2365a688dc6458a95c6434e293b8f51'
 })
+
+const initialState = {
+  input: '',
+  imageUrl: '',
+  box: {},
+  route: 'signIn',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  }
+}
 
 class App extends Component {
   constructor() {
@@ -51,7 +67,7 @@ class App extends Component {
 
   onRouteChange = (route) => {
     if (route === 'signIn') {
-        this.setState({isSignedIn: false});
+        this.setState(initialState);
       } else if(route === 'home') {
         this.setState({isSignedIn: true});
       }
@@ -131,6 +147,10 @@ class App extends Component {
               : <Registration loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
             )
         }
+        {/* <h3 className='footer'>
+          <small>© 2016<b> Piotr Kiluk</b>. All Rights Reserved.</small>
+        </h3> */}
+        {/* <Footer className='ph5-m ph6-l'/> */}
       </div>
     )
   }
