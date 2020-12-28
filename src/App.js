@@ -8,7 +8,6 @@ import Rank from './Components/Rank/Rank';
 import SignIn from './Components/SignIn/SignIn';
 import Registration from './Components/Registration/Registration';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
-//import Footer from './Components/Footer/Footer';
 import './App.css';
 
 const app = new Clarifai.App({
@@ -147,10 +146,6 @@ class App extends Component {
               : <Registration loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
             )
         }
-        {/* <h3 className='footer'>
-          <small>© 2016<b> Piotr Kiluk</b>. All Rights Reserved.</small>
-        </h3> */}
-        {/* <Footer className='ph5-m ph6-l'/> */}
       </div>
     )
   }
@@ -168,4 +163,4 @@ const particleOptions = {
   }
 }
 
-export default App;
+export default App; 

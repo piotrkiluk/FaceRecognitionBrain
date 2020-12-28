@@ -22,7 +22,7 @@ class Registration extends Component  {
     })
     .then(response => response.json(response))
     .then(user => {
-      if (user) {
+      if (user.id) {
         this.props.loadUser(user)
         this.props.onRouteChange('home');
       }
@@ -31,15 +31,31 @@ class Registration extends Component  {
   }
 
   onNameChange = (event) => {
-    this.setState({name: event.target.value})
+    if(event.target.value.length >= 5) 
+    {
+      this.setState({name: event.target.value});
+    } else {
+      console.log('invalid name - name must contain 5 to 20 characters')
+    }
   }
 
   onEmailChange = (event) => {
-    this.setState({email: event.target.value})
+    if(event.target.value.search('@') > 0 && event.target.value.length >= 5) 
+      {
+        this.setState({email: event.target.value});
+      } else {
+        console.log('invalid email');
+      }
   }
-
+  
   onPasswordChange = (event) => {
-    this.setState({password: event.target.value})
+    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,50})");
+    if(strongRegex.test(event.target.value))
+    {
+      this.setState({password: event.target.value})
+    } else {
+      console.log('invalid password - password must contain 8 to 50 characters with at least one lowercase letter, one uppercase letter, one numeric digit, and one special character');
+    }
   }  
 
   render () {
