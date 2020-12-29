@@ -91,12 +91,11 @@ class App extends Component {
  
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
-    // ADD fetch to server for clarifai result
     fetch('http://localhost:3000/imageUrl', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        id: this.state.input
+        input: this.state.input
       })
     })
     .then(response => response.json())
@@ -113,7 +112,6 @@ class App extends Component {
         .then(count => {
           this.setState(Object.assign(this.state.user, { entries: count}))
         })
-  
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
     })
