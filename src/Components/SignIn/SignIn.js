@@ -36,6 +36,12 @@ class SignIn extends Component {
       })
   };
 
+  handleKeyPress = (event) => {
+    if(event.charCode === 13) {
+      this.onSubmitSignIn();
+    }
+  };
+
   render () {
     const { onRouteChange } = this.props
     return (
@@ -47,7 +53,8 @@ class SignIn extends Component {
             <div className="mt3">
               <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
               <input 
-                onChange = {this.onEmailChange}
+                onChange = { this.onEmailChange }
+                onKeyPress = { this.handleKeyPress }
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                 type="email" 
                 name="email-address"  
@@ -56,7 +63,8 @@ class SignIn extends Component {
             <div className="mv3">
               <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
               <input 
-              onChange={this.onPasswordChange}
+              onChange = { this.onPasswordChange }
+              onKeyPress = { this.handleKeyPress }
               className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
               type="password" 
               name="password"  
@@ -65,7 +73,7 @@ class SignIn extends Component {
           </fieldset>
           <div className="">
             <input 
-              onClick={this.onSubmitSignIn}
+              onClick = { this.onSubmitSignIn }
               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
               type="submit" 
               value="Sign in" />

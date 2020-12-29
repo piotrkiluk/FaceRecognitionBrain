@@ -10,7 +10,7 @@ class Registration extends Component  {
     }
   }
 
-  onSubmitSignIn = () => {
+  onSubmitSignUp = () => {
     fetch('http://localhost:3000/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -58,6 +58,12 @@ class Registration extends Component  {
     }
   }  
 
+  handleKeyPress = (event) => {
+    if(event.charCode === 13) {
+      this.onSubmitSignUp();
+    }
+  };
+
   render () {
     return (
       <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 center shadow-5">      
@@ -69,6 +75,7 @@ class Registration extends Component  {
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Name</label>
                 <input 
                 onChange={this.onNameChange}
+                onKeyPress = { this.handleKeyPress }
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                 type="text" 
                 name="name"  
@@ -78,6 +85,7 @@ class Registration extends Component  {
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                 <input 
                 onChange={this.onEmailChange}
+                onKeyPress = { this.handleKeyPress }
                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                 type="email" 
                 name="email-address"  
@@ -87,6 +95,7 @@ class Registration extends Component  {
                 <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
                 <input 
                 onChange={this.onPasswordChange}
+                onKeyPress = { this.handleKeyPress }
                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                 type="password" 
                 name="password"  
@@ -95,7 +104,7 @@ class Registration extends Component  {
             </fieldset>
             <div className="">
               <input 
-                onClick={this.onSubmitSignIn}
+                onClick={this.onSubmitSignUp}
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                 type="submit" 
                 value="Sign up" />
