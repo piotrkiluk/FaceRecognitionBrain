@@ -11,7 +11,7 @@ class Registration extends Component  {
   }
 
   onSubmitSignUp = () => {
-    fetch('http://localhost:3000/register', {
+    fetch('https://floating-inlet-71925.herokuapp.com/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
