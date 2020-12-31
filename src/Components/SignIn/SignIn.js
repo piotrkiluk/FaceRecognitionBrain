@@ -51,7 +51,7 @@ class SignIn extends Component {
           <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
             <legend className="f4 fw6 ph0 mh0">Sign In</legend>
             <div className="mt3">
-              <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+              <label className="db fw6 lh-copy f5" htmlFor="email-address">Email</label>
               <input 
                 onChange = { this.onEmailChange }
                 onKeyPress = { this.handleKeyPress }
@@ -61,7 +61,7 @@ class SignIn extends Component {
                 id="email-address" />
             </div>
             <div className="mv3">
-              <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
+              <label className="db fw6 lh-copy f5" htmlFor="password">Password</label>
               <input 
               onChange = { this.onPasswordChange }
               onKeyPress = { this.handleKeyPress }
@@ -74,12 +74,12 @@ class SignIn extends Component {
           <div className="">
             <input 
               onClick = { this.onSubmitSignIn }
-              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f5 dib" 
               type="submit" 
               value="Sign in" />
           </div>
           <div className="lh-copy mt3">
-            <p onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
+            <p onClick={() => onRouteChange('register')} className="f5 link dim black db pointer">Register</p>
           </div>
         </div>
       </main>

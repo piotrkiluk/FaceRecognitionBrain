@@ -1,3 +1,6 @@
+
+//Extremly proud of myself after 3 months of studying programming I have finished this project with server and db deployed on Heroku and front deployed on gitHubPages. Projects published on gitHub are complete and works properly.
+
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
 import Navigation from './Components/Navigation/Navigation';
